@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#030712" />
+    </linearGradient>
+    <linearGradient id="cyber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="headGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bg)" />
+
+  <!-- Grid overlay -->
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1" />
+  </pattern>
+  <rect width="400" height="400" fill="url(#grid)" />
+
+  <!-- Reticle Corners -->
+  <path d="M 30 50 L 30 30 L 50 30" fill="none" stroke="#06b6d4" stroke-width="2" />
+  <path d="M 370 50 L 370 30 L 350 30" fill="none" stroke="#06b6d4" stroke-width="2" />
+  <path d="M 30 350 L 30 370 L 50 370" fill="none" stroke="#06b6d4" stroke-width="2" />
+  <path d="M 370 350 L 370 370 L 350 370" fill="none" stroke="#06b6d4" stroke-width="2" />
+
+  <!-- Target Rings -->
+  <circle cx="200" cy="180" r="130" fill="none" stroke="rgba(6, 182, 212, 0.15)" stroke-width="1" stroke-dasharray="4,4" />
+
+  <!-- Silhouette Head & Shoulders -->
+  <g fill="url(#headGrad)" stroke="#334155" stroke-width="2">
+    <!-- Head -->
+    <circle cx="200" cy="140" r="56" />
+    <!-- Shoulders / Torso -->
+    <path d="M 90 320 C 90 230, 140 216, 200 216 C 260 216, 310 230, 310 320 Z" />
+  </g>
+
+  <!-- Neon HUD elements -->
+  <circle cx="200" cy="140" r="62" fill="none" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.4" />
+  
+  <!-- Facial crosshair line -->
+  <line x1="160" y1="140" x2="240" y2="140" stroke="#06b6d4" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="6,4" />
+  <line x1="200" y1="100" x2="200" y2="180" stroke="#06b6d4" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="6,4" />
+
+  <!-- Lower Banner -->
+  <rect x="70" y="335" width="260" height="26" rx="4" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1" />
+  <text x="200" y="352" text-anchor="middle" fill="#06b6d4" font-family="monospace" font-size="11" font-weight="bold" letter-spacing="2">
+    [ PERSON OF INTEREST ]
+  </text>
+</svg>

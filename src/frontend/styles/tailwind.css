@@ -1,0 +1,74 @@
+/*
+ * Tailwind v4 entry — INCREMENTAL setup.
+ *
+ * We deliberately SKIP Tailwind's `preflight` base reset so it never
+ * overrides the existing `reset.css` / `variables.css` / component styles.
+ * Only the utility layer is emitted, so new UI components can use Tailwind
+ * classes while the current vanilla CSS keeps working untouched.
+ *
+ * Build: npm run build:css  →  produces tailwind.generated.css
+ */
+
+@layer theme, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* --------------------------------------------------------------------------
+ * Source scanning: tell Tailwind which files contain utility class names.
+ * v4 auto-detects, but explicit @source keeps builds reliable in this
+ * non-standard layout (classes live inside JS template strings too).
+ * -------------------------------------------------------------------------- */
+@source "../../index.html";
+@source "../js/**/*.{js,ts}";
+@source "../ts/**/*.{js,ts}";
+@source "../components/**/*.{js,ts}";
+
+/* --------------------------------------------------------------------------
+ * Theme tokens — mirror the red/black crime-thriller palette from
+ * variables.css so Tailwind utilities (bg-crime-900, text-crimson, etc.)
+ * stay in sync with the design system.
+ * -------------------------------------------------------------------------- */
+@theme {
+  /* Surfaces (deep black with blood undertone) */
+  --color-crime-950: #060405;
+  --color-crime-900: #0a0607;
+  --color-crime-850: #140a0d;
+  --color-crime-800: #1c0e11;
+  --color-crime-700: #28141a;
+
+  /* Crimson accent scale */
+  --color-crimson-500: #e11d48;
+  --color-crimson-400: #ff3355;
+  --color-crimson-600: #b3122f;
+  --color-crimson-dim: rgba(225, 29, 72, 0.15);
+  --color-crimson-glow: rgba(225, 29, 72, 0.4);
+
+  /* Hot danger red */
+  --color-blood-500: #ff2d3d;
+
+  /* Rose highlights */
+  --color-rose-300: #fda4af;
+  --color-rose-400: #fb7185;
+
+  /* Evidence gold (warning) */
+  --color-gold-500: #f59e0b;
+
+  /* Text */
+  --color-ash-100: #ffffff;
+  --color-ash-200: #f3eaea;
+  --color-ash-400: #ab989c;
+  --color-ash-600: #7d6a6f;
+
+  /* Borders */
+  --color-line-subtle: #33191f;
+  --color-line-strong: #55282f;
+
+  /* Typography */
+  --font-mono: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, monospace;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}

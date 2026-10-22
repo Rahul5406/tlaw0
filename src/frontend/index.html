@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE LAST ARTIFACT (TLA-026) | CyRA Digital Forensics Portal</title>
+  <meta name="description" content="Official Digital Forensics and Cyber Incident Investigation Platform for Case TLA-026 (PROJECT AETHER). Organized by CyRA Community at Sree Sakthi Engineering College.">
+  <meta name="theme-color" content="#0a0607">
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Forensic Stylesheets -->
+  <link rel="stylesheet" href="/styles/variables.css">
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/evidence.css">
+  <link rel="stylesheet" href="/styles/workspace.css">
+  <link rel="stylesheet" href="/styles/report.css">
+  <link rel="stylesheet" href="/styles/admin.css">
+  <link rel="stylesheet" href="/styles/split-flap.css">
+  <link rel="stylesheet" href="/styles/splash-screen.css">
+  <link rel="stylesheet" href="/styles/flip-card.css">
+  <!-- Tailwind utilities (generated; loaded last so utilities can override
+       component defaults when needed). Rebuild with: npm run build:css -->
+  <link rel="stylesheet" href="/styles/tailwind.generated.css">
+</head>
+<body>
+  <!-- Cinematic Red Noir Crime Atmosphere (Pure CSS - TLA-026) -->
+  <div class="cinematic-bg-container background-video-layer" id="cinematic-bg-container" aria-hidden="true">
+    <div class="crime-bg-base"></div>
+    <div class="crime-bg-glow crime-bg-glow-a"></div>
+    <div class="crime-bg-glow crime-bg-glow-b"></div>
+    <div class="crime-bg-sweep"></div>
+    <div class="crime-bg-scanlines"></div>
+    <div class="crime-bg-vignette"></div>
+    <div class="cinematic-bg-overlay background-overlay"></div>
+    <div class="cinematic-bg-grid"></div>
+  </div>
+
+  <!-- Ambient Background Soundtrack Audio (TLA-026) -->
+  <audio id="tla-background-audio" preload="auto" loop>
+    <source src="/public/background.mp3" type="audio/mpeg">
+    <source src="/background.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="app" class="website-content">
+    <!-- Top Command & Status Bar -->
+    <header class="command-header">
+      <div class="top-bar-strip">
+        <div class="system-status-indicator">
+          <span class="pulse-dot" id="system-status-dot"></span>
+          <span id="system-status-text">CYRA FORENSIC TERMINAL // ACTIVE PROTOCOL</span>
+        </div>
+        <div class="top-bar-meta">
+          <span id="server-clock-display">UTC --:--:--</span>
+          <span class="top-bar-classification">CLASSIFICATION: CONFIDENTIAL</span>
+        </div>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="header-main-nav">
+        <div class="brand-container">
+          <button class="mobile-menu-btn" id="mobile-toggle-btn" aria-label="Toggle navigation">☰</button>
+          <a href="/" data-link class="brand-logo-badge">TLA-026</a>
+          <div class="brand-info">
+            <span class="brand-title" id="site-title-display">THE LAST ARTIFACT</span>
+            <span class="brand-sub">PROJECT AETHER • FORENSIC INCIDENT</span>
+          </div>
+        </div>
+
+        <ul class="nav-links" id="main-nav-links">
+          <!-- Dynamically populated by Navbar.js -->
+        </ul>
+
+        <div class="nav-actions" id="nav-actions-container">
+          <!-- Background Audio Controller Mount -->
+          <div id="nav-audio-mount"></div>
+
+          <!-- Live Synchronized Case Timer Pill -->
+          <div id="case-timer-mount"></div>
+
+          <!-- User Profile / Auth Action Buttons -->
+          <div id="nav-auth-mount"></div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Dynamic Content Outlet -->
+    <main class="main-content" id="main-container">
+      <div class="app-loading-state">
+        <span class="pulse-dot"></span> Initializing CyRA Forensics Subsystem...
+      </div>
+    </main>
+
+    <!-- Forensic Footer -->
+    <footer class="app-footer no-print">
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-block">
+            <div class="footer-brand-title">
+              THE LAST ARTIFACT (TLA-026)
+            </div>
+            <div class="footer-desc">
+              Digital Forensics, Incident Reconstruction, and Intellectual Property Investigation Simulation.
+              Organized by CyRA Community at Sree Sakthi Engineering College.
+            </div>
+          </div>
+          <div class="footer-block">
+            <div class="footer-heading">INCIDENT DESK</div>
+            <div class="footer-contact">
+              ARCH Room Incident Hotline: ARCH-EXT-03<br>
+              Direct Link: <a href="mailto:cyra.forensics@sreesakthi.ac.in" id="footer-contact-link">cyra.forensics@sreesakthi.ac.in</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div>© 2026 CyRA Forensics Group. All evidence records sealed under chain-of-custody.</div>
+          <div>STATION: SSEC-CYRA-NODE-1 • SECURE PROTOCOL v4.2</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Global Modal & Toast Anchors -->
+  <div id="modal-container"></div>
+  <div id="toast-container"></div>
+
+  <!-- Main Modular Application Entrypoint -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+build/
+logs/
+
+# TypeScript incremental build cache (compiled JS in src/frontend/js/ts-dist
+# and the generated tailwind.generated.css ARE committed so `npm start`
+# works with no build step required).
+*.tsbuildinfo
+src/frontend/ts/.tsbuildinfo

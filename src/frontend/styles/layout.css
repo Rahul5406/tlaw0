@@ -1,0 +1,752 @@
+/* App Shell & Main Layout */
+#app,
+.website-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: transparent;
+}
+
+/* ==========================================================================
+   Cinematic Red Noir Crime Atmosphere (TLA-026) - Pure CSS
+   ========================================================================== */
+.cinematic-bg-container,
+.background-video-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Deep black base with faint blood-red undertone */
+.crime-bg-base {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(90, 8, 24, 0.55) 0%, transparent 65%),
+    linear-gradient(180deg, #12060a 0%, #0a0607 45%, #060405 100%);
+}
+
+/* Slow-drifting crimson glow blobs */
+.crime-bg-glow {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  z-index: 0;
+  will-change: transform;
+}
+
+.crime-bg-glow-a {
+  top: -20vw;
+  left: -15vw;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.5) 0%, transparent 70%);
+  animation: crime-drift-a 26s ease-in-out infinite alternate;
+}
+
+.crime-bg-glow-b {
+  bottom: -25vw;
+  right: -18vw;
+  background: radial-gradient(circle, rgba(127, 9, 29, 0.55) 0%, transparent 70%);
+  animation: crime-drift-b 32s ease-in-out infinite alternate;
+}
+
+@keyframes crime-drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(8vw, 6vh, 0) scale(1.15); }
+}
+
+@keyframes crime-drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.1); }
+  to { transform: translate3d(-7vw, -5vh, 0) scale(0.95); }
+}
+
+/* Slow diagonal light sweep, like an interrogation lamp */
+.crime-bg-sweep {
+  position: absolute;
+  top: -40%;
+  left: -30%;
+  width: 55%;
+  height: 180%;
+  z-index: 1;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(225, 29, 72, 0.05) 35%,
+    rgba(255, 45, 61, 0.09) 50%,
+    rgba(225, 29, 72, 0.05) 65%,
+    transparent 100%
+  );
+  transform: rotate(8deg);
+  animation: crime-sweep 18s linear infinite;
+}
+
+@keyframes crime-sweep {
+  from { transform: translateX(-40%) rotate(8deg); }
+  to { transform: translateX(220%) rotate(8deg); }
+}
+
+/* Faint CRT scanline texture for thriller-terminal feel */
+.crime-bg-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.22) 0px,
+    rgba(0, 0, 0, 0.22) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.35;
+}
+
+/* Heavy vignette to frame the case file */
+.crime-bg-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse 90% 80% at 50% 45%, transparent 40%, rgba(4, 2, 3, 0.75) 100%);
+}
+
+/* Dark overlay: 0.25 opacity (within required 0.20 to 0.30 range) */
+.cinematic-bg-overlay,
+.background-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+/* Subtle digital forensic grid scan pattern */
+.cinematic-bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: 
+    linear-gradient(rgba(225, 29, 72, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225, 29, 72, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+/* Responsive adjustments for mobile/tablet */
+@media (max-width: 768px) {
+  .cinematic-bg-grid {
+    background-size: 32px 32px;
+  }
+  .crime-bg-sweep {
+    display: none;
+  }
+}
+
+/* Forensic Command Top Bar */
+.command-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(16, 8, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.top-bar-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 24px;
+  background-color: rgba(10, 5, 7, 0.7);
+  border-bottom: 1px solid rgba(225, 29, 72, 0.15);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.system-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .top-bar-strip .system-status-indicator {
+    display: none;
+  }
+}
+
+.top-bar-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.top-bar-classification {
+  color: var(--forensic-emerald);
+  font-weight: 700;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--forensic-emerald);
+  box-shadow: 0 0 8px var(--forensic-emerald);
+}
+
+.pulse-dot.warning {
+  background-color: var(--forensic-amber);
+  box-shadow: 0 0 8px var(--forensic-amber);
+}
+
+.pulse-dot.danger {
+  background-color: var(--forensic-red);
+  box-shadow: 0 0 8px var(--forensic-red);
+  animation: pulse-danger 1s infinite alternate;
+}
+
+@keyframes pulse-danger {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+.header-main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 2vw, 32px);
+  padding: 12px clamp(16px, 3vw, 40px);
+  width: 100%;
+  max-width: none;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.brand-logo-badge {
+  background: linear-gradient(135deg, #5c0a1e 0%, #23060d 100%);
+  border: 1px solid var(--forensic-emerald);
+  color: var(--forensic-emerald);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  box-shadow: 0 0 10px var(--forensic-emerald-dim);
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.brand-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-highlight);
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.brand-sub {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+/* Nav links — flexible middle lane between the fixed brand (left) and fixed
+   actions (right). It grows to fill the leftover space and centers the links.
+   `safe center` guarantees that if the links ever exceed the lane, they align
+   to the start (flush after the brand) instead of overflowing LEFT over it,
+   and `overflow-x` lets the row scroll as a last resort — never overlapping. */
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  justify-content: center;
+  justify-content: safe center;
+  flex-wrap: nowrap;
+  gap: 4px;
+  list-style: none;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+/* Keep each link at its natural width so the lane scrolls (never squishes)
+   when the row is tight — combined with the lane's overflow-x, nav content is
+   clipped to its own lane and can never bleed over the brand or actions. */
+.nav-links > li {
+  flex-shrink: 0;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 11px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--text-highlight);
+  background-color: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: var(--forensic-emerald);
+  background-color: var(--forensic-emerald-dim);
+  border: 1px solid rgba(225, 29, 72, 0.35);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Auth Buttons Mount (Login / Register or User + Logout) */
+#nav-auth-mount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mobile drawer toggle (hidden on desktop; revealed by media query at file end) */
+.mobile-menu-btn {
+  display: none;
+  font-size: 1.25rem;
+  padding: 6px 10px;
+  color: var(--text-main);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+/* Global Case Timer Pill */
+.timer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.timer-pill.running {
+  border-color: var(--forensic-emerald);
+  color: var(--forensic-emerald);
+  box-shadow: 0 0 10px var(--forensic-emerald-dim);
+}
+
+.timer-pill.warning {
+  border-color: var(--forensic-amber);
+  color: var(--forensic-amber);
+  background-color: var(--forensic-amber-dim);
+}
+
+.timer-pill.danger {
+  border-color: var(--forensic-red);
+  color: var(--forensic-red);
+  background-color: var(--forensic-red-dim);
+  animation: timer-flash 1s infinite alternate;
+}
+
+@keyframes timer-flash {
+  from { border-color: var(--forensic-red); }
+  to { border-color: rgba(239, 68, 68, 0.2); }
+}
+
+/* Ambient Background Audio Controller Pill & Volume Slider */
+.audio-control-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.audio-control-pill:hover {
+  border-color: rgba(225, 29, 72, 0.45);
+  color: var(--text-muted);
+}
+
+.audio-control-pill.active {
+  border-color: var(--forensic-emerald);
+  color: var(--forensic-emerald);
+  background-color: rgba(225, 29, 72, 0.10);
+  box-shadow: 0 0 12px var(--forensic-emerald-glow);
+}
+
+.audio-control-pill.pending {
+  border-color: var(--forensic-amber);
+  color: var(--forensic-amber);
+  background-color: var(--forensic-amber-dim);
+  animation: audio-pulse 1.5s infinite alternate;
+}
+
+@keyframes audio-pulse {
+  from { border-color: var(--forensic-amber); opacity: 0.8; }
+  to { border-color: rgba(245, 158, 11, 0.3); opacity: 1; }
+}
+
+.audio-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.audio-toggle-btn:hover {
+  filter: brightness(1.2);
+}
+
+.audio-speaker-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.audio-volume-container {
+  display: none; /* slim by default; revealed on hover/focus below */
+  align-items: center;
+  gap: 6px;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: 8px;
+  margin-left: 2px;
+}
+
+.audio-control-pill:hover .audio-volume-container,
+.audio-control-pill:focus-within .audio-volume-container {
+  display: inline-flex;
+}
+
+.audio-volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 50px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.audio-volume-slider:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.audio-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--forensic-emerald);
+  box-shadow: 0 0 6px var(--forensic-emerald);
+  cursor: pointer;
+}
+
+.audio-volume-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--forensic-emerald);
+  box-shadow: 0 0 6px var(--forensic-emerald);
+  cursor: pointer;
+  border: none;
+}
+
+.audio-volume-label {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  min-width: 26px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.audio-control-pill.active .audio-volume-label {
+  color: var(--forensic-emerald);
+}
+
+/* Main Content Container */
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Centered Loading / Status State */
+.app-loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 60px 24px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Forensic Footer */
+.app-footer {
+  margin-top: auto;
+  background-color: var(--bg-secondary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-subtle);
+  padding: 32px 24px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.footer-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  min-width: 0;
+}
+
+.footer-brand-title {
+  font-weight: 800;
+  color: var(--text-highlight);
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+}
+
+.footer-desc {
+  color: var(--text-muted);
+  max-width: 480px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.footer-heading {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.footer-contact {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   Header Responsive Rules
+   (Placed at file end so they override the base component rules above.)
+   ========================================================================== */
+
+/* Intermediate widths: tighten nav spacing to keep everything on one line */
+@media (max-width: 1280px) {
+  .header-main-nav {
+    gap: 16px;
+  }
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+  .brand-title {
+    font-size: 1rem;
+  }
+}
+
+/* Below 1470px: collapse to mobile menu, shed non-essential pill extras.
+   (Verified: the inline command bar — brand + full nav + audio/timer/actions —
+   needs ~1470px to lay out with zero clipping, accounting for the ~15px
+   scrollbar. Below that a clean drawer beats a cramped, clipped row.) */
+@media (max-width: 1470px) {
+  .mobile-menu-btn {
+    display: inline-block;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(16, 8, 10, 0.97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-strong);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 8px;
+    box-shadow: var(--shadow-lg);
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-link {
+    justify-content: center;
+  }
+  .audio-volume-container {
+    display: none;
+  }
+  .header-main-nav {
+    gap: 12px;
+  }
+  .brand-sub {
+    display: none;
+  }
+}
+
+/* Hide the long brand subtitle on narrower screens so the brand block slims
+   down and the inline nav keeps full clearance in the 1441–1500px band. */
+@media (max-width: 1500px) {
+  .brand-sub {
+    display: none;
+  }
+}
+
+/* Below 1024px: drop the ambient audio pill + case timer to free header space
+   (drawer mode leaves no room for them alongside the brand and user actions) */
+@media (max-width: 1024px) {
+  .audio-control-pill,
+  .timer-pill {
+    display: none;
+  }
+}
+
+/* Below 640px: collapse the logged-in user name/role to just the Logout action
+   so the header never overflows on phones (inline display is overridden) */
+@media (max-width: 640px) {
+  #nav-auth-mount > div > div {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-bar-strip .system-status-indicator {
+    display: none;
+  }
+  .audio-control-pill {
+    display: none;
+  }
+  .timer-pill {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+  }
+  .brand-title {
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-logo-badge {
+    display: none;
+  }
+  .timer-pill {
+    font-size: 0.72rem;
+    padding: 5px 8px;
+  }
+}

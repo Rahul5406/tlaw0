@@ -1,0 +1,23 @@
+;; ============================================================================
+;; PROJECT AETHER - HARDWARE SENSOR NODE REVISION 7 (AETHER-Node-07)
+;; MICROCONTROLLER: STM32H743ZI | CRYPTO ENGINE: ATECC608A
+;; DUMP ACQUIRED: JTAG INTERFACE 25-SEP-2026 03:15 IST (CYRA LABS)
+;; ============================================================================
+
+00000000: 00 00 02 20 51 04 00 08  95 04 00 08 97 04 00 08  ... Q...........
+00000010: 00 00 00 00 00 00 00 00  00 00 00 00 99 04 00 08  ................
+00000020: 00 00 00 00 00 00 00 00  9B 04 00 08 9D 04 00 08  ................
+00000030: 41 45 54 48 45 52 5F 56  32 5F 50 52 4F 54 4F 43  AETHER_V2_PROTOC
+00000040: 4F 4C 5F 4B 45 59 3D 66  38 63 32 65 32 33 33 2D  OL_KEY=f8c2e233-
+00000050: 31 66 30 38 2D 34 35 65  32 2D 39 31 34 33 2D 31  1f08-45e2-9143-1
+00000060: 65 66 66 35 66 38 35 39  33 36 36 00 00 00 00 00  eff5f859366.....
+00000070: 68 74 74 70 73 3A 2F 2F  63 32 2E 61 65 74 68 65  https://c2.aethe
+00000080: 72 2D 65 78 66 69 6C 2E  69 6F 2F 61 70 69 2F 73  r-exfil.io/api/s
+00000090: 69 6E 6B 00 55 4E 41 55  54 48 4F 52 49 5A 45 44  ink.UNAUTHORIZED
+000000A0: 5F 42 4F 4F 54 4C 4F 41  44 45 52 5F 50 41 54 43  _BOOTLOADER_PATC
+000000B0: 48 5F 42 59 5F 4B 52 32  36 00 00 00 00 00 00 00  H_BY_KR26.......
+
+;; FORENSIC NOTE:
+;; String at 0x70 points to rogue telemetry drop: c2.aether-exfil.io
+;; Bootloader watermark at 0xA0 contains signature: "PATCH_BY_KR26" (matches suspect Kavin Raj)
+;; Key at 0x40 is master AES-256 decryption token for archived sensor packets.

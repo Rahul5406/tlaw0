@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    /* Language & environment */
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+
+    /* Emit compiled JS next to the vanilla frontend so Express can serve it
+       directly — no bundler, no runtime framework. */
+    "rootDir": "src/frontend/ts",
+    "outDir": "src/frontend/js/ts-dist",
+    "sourceMap": true,
+    "removeComments": false,
+
+    /* Strict type safety for new UI components */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Interop with existing vanilla ES-module code */
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+
+    /* Incremental builds */
+    "incremental": true,
+    "tsBuildInfoFile": "src/frontend/ts/.tsbuildinfo"
+  },
+  "include": ["src/frontend/ts/**/*.ts"],
+  "exclude": ["node_modules", "src/frontend/js/ts-dist"]
+}

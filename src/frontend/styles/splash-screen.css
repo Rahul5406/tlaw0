@@ -1,0 +1,163 @@
+/*
+ * Splash screen — full-bleed red-noir welcome that mounts the SplitFlapText
+ * departure board. Pure CSS atmosphere (no video), themed to match the site.
+ */
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 28%, rgba(225, 29, 72, 0.2), transparent 62%),
+    radial-gradient(ellipse 120% 90% at 50% 108%, rgba(90, 8, 26, 0.35), transparent 60%),
+    #060405;
+  opacity: 0;
+  transition: opacity 620ms ease;
+  cursor: pointer;
+}
+
+.splash-screen.is-visible {
+  opacity: 1;
+}
+
+.splash-screen.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* CRT scanlines over the whole splash. */
+.splash-screen__scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.32) 0 1px,
+    transparent 1px 3px
+  );
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
+
+/* Soft sweeping light bar, echoing the background atmosphere. */
+.splash-screen__sweep {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 45, 61, 0.08) 50%,
+    transparent 60%
+  );
+  background-size: 250% 100%;
+  animation: splash-sweep 7s linear infinite;
+}
+
+@keyframes splash-sweep {
+  0% {
+    background-position: 160% 0;
+  }
+  100% {
+    background-position: -60% 0;
+  }
+}
+
+.splash-screen__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 100%;
+}
+
+.splash-screen__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+  color: var(--forensic-teal);
+}
+
+.splash-screen__rule {
+  width: min(340px, 70vw);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(225, 29, 72, 0.6),
+    transparent
+  );
+}
+
+.splash-screen__board {
+  max-width: 100%;
+  padding: 18px 22px;
+  border: 1px solid rgba(225, 29, 72, 0.35);
+  border-radius: 10px;
+  background: rgba(22, 9, 13, 0.72);
+  box-shadow:
+    0 0 44px rgba(225, 29, 72, 0.22),
+    inset 0 0 30px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+}
+
+.splash-screen__board .split-flap-text {
+  display: flex;
+  justify-content: center;
+}
+
+.splash-screen__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.splash-screen__status .pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--forensic-emerald);
+  animation: splash-blink 1.4s ease-in-out infinite;
+}
+
+@keyframes splash-blink {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 10px currentColor;
+  }
+  50% {
+    opacity: 0.25;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .splash-screen__eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.34em;
+    text-indent: 0.34em;
+  }
+
+  .splash-screen__board {
+    padding: 12px 12px;
+  }
+
+  .splash-screen__status {
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+  }
+}

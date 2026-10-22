@@ -1,0 +1,3 @@
+sensor_id,zone,status
+S-01,ARCH_3,TRIPPED
+S-02,FARADAY,BYPASS

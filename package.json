@@ -1,0 +1,36 @@
+{
+  "name": "tlaw0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "build:css": "tailwindcss -i ./src/frontend/styles/tailwind.css -o ./src/frontend/styles/tailwind.generated.css --minify",
+    "build:ts": "tsc -p tsconfig.json",
+    "build": "npm run build:ts && npm run build:css",
+    "watch:css": "tailwindcss -i ./src/frontend/styles/tailwind.css -o ./src/frontend/styles/tailwind.generated.css --watch",
+    "watch:ts": "tsc -p tsconfig.json --watch",
+    "test": "node tests/run-tests.js",
+    "test:e2e": "playwright test",
+    "seed": "node src/backend/database/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,6 @@
+asset_id,item_description,custodian,authorized_zone,checkout_date,return_date,status,discrepancy_flag
+AST-091,Faraday Enclosure Unit 3,Prof. Alok Mathur,ARCH-LAB-03,2026-09-01,PERMANENT,IN_SITU,NONE
+AST-092,AETHER-Node-07 (Core Prototype),Prof. Alok Mathur,ARCH-LAB-03,2026-09-20,2026-09-25,MISSING,CRITICAL_THEFT
+AST-093,ATECC608A Cryptographic Dongle,Kavin Raj,ARCH-LAB-02,2026-09-22,2026-09-24,RETURNED_DAMAGED,SUSPICIOUS
+AST-094,Gigabit Packet Sniffer Tap,Meera Nair,ARCH-SRV-01,2026-09-24,PENDING,IN_USE,HIGH_DATA_FLOW
+AST-095,Master Keycard Override Fob,Rohit Sen,SECURITY_OFFICE,2026-09-24,2026-09-24,RETURNED_UNLOGGED,AUDIT_FAILURE

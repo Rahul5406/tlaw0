@@ -1,0 +1,66 @@
+:root {
+  /* Color Palette - Red & Black Crime Thriller Theme */
+  --bg-primary: #0a0607;
+  --bg-secondary: rgba(20, 10, 12, 0.74);
+  --bg-surface: rgba(28, 14, 17, 0.70);
+  --bg-surface-elevated: rgba(40, 20, 24, 0.78);
+  --bg-overlay: rgba(8, 4, 6, 0.72);
+
+  /* Primary Accent - Crimson Interrogation Red */
+  --forensic-emerald: #e11d48;
+  --forensic-emerald-dim: rgba(225, 29, 72, 0.15);
+  --forensic-emerald-glow: rgba(225, 29, 72, 0.40);
+
+  /* Secondary Accent - Blood Rose */
+  --forensic-teal: #fb7185;
+  --forensic-teal-dim: rgba(251, 113, 133, 0.15);
+
+  /* Tertiary Highlight - Pale Rose */
+  --forensic-cyan: #fda4af;
+  --forensic-amber: #f59e0b;
+  --forensic-amber-dim: rgba(245, 158, 11, 0.15);
+
+  /* Danger Accent - Hot Blood Red */
+  --forensic-red: #ff2d3d;
+  --forensic-red-dim: rgba(255, 45, 61, 0.18);
+  --forensic-red-glow: rgba(255, 45, 61, 0.40);
+
+  /* Typography Colors */
+  --text-main: #f3eaea;
+  --text-muted: #ab989c;
+  --text-dim: #7d6a6f;
+  --text-highlight: #ffffff;
+
+  /* Borders and Dividers */
+  --border-subtle: #33191f;
+  --border-strong: #55282f;
+  --border-focus: var(--forensic-emerald);
+
+  /* Typography Stack */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
+
+  /* Shadows and Elevations */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.6);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.8);
+  --shadow-glow: 0 0 16px var(--forensic-emerald-glow);
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}

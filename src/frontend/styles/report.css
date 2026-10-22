@@ -1,0 +1,180 @@
+/* Final Report Submission & Forensic Export Document */
+
+.report-header-banner {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.report-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.report-section-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.section-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-highlight);
+}
+
+.section-instructions {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid var(--forensic-teal);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.word-count-meter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+
+.word-count-meter.valid {
+  color: var(--forensic-emerald);
+}
+
+.word-count-meter.invalid {
+  color: var(--forensic-amber);
+}
+
+/* Official Forensic Dossier Printable View */
+.official-dossier-view {
+  background-color: #ffffff;
+  color: #111827;
+  padding: 48px;
+  border-radius: var(--radius-sm);
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-lg);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.dossier-header {
+  border-bottom: 3px double #000000;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.dossier-classification-stamp {
+  display: inline-block;
+  border: 2px solid #b91c1c;
+  color: #b91c1c;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 4px 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.dossier-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.dossier-meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+}
+
+.dossier-meta-table td {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+}
+
+.dossier-section {
+  margin-bottom: 24px;
+  page-break-inside: avoid;
+}
+
+.dossier-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-bottom: 1px solid #9ca3af;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+}
+
+.dossier-section-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.dossier-signature-block {
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+  page-break-inside: avoid;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+}
+
+/* Print Styles for Direct Browser PDF Export */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .command-header, .app-footer, .no-print, #toast-container, .btn, .report-header-banner, #final-report-form {
+    display: none !important;
+  }
+  .main-content {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  .official-dossier-view {
+    display: block !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  .dossier-section {
+    page-break-inside: avoid;
+  }
+}

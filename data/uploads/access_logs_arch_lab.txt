@@ -1,0 +1,25 @@
+================================================================================
+ARCH RESEARCH FACILITY - AUTOMATED INGRESS/EGRESS ACCESS TELEMETRY
+FACILITY CODE: SSEC-ARCH-03 | DATE OF RECORD: 24-SEP-2026
+LOGGING SYSTEM: SentriLock Pro v4.28 (Hardware Revision D)
+================================================================================
+TIMESTAMP               DOOR_ID        BADGE_ID     HOLDER_NAME           AUTH_STATUS  SENSOR_NOTES
+------------------------------------------------------------------------------------------------
+2026-09-24 19:45:10     ARCH-EXT-01    SSEC-F092    Prof. Alok Mathur     GRANTED      Main entry point
+2026-09-24 20:12:04     ARCH-LAB-02    SSEC-E114    Kavin Raj             GRANTED      Hardware bench #4
+2026-09-24 20:30:19     ARCH-LAB-01    SSEC-E102    Arjun Dev             GRANTED      Firmware workstation
+2026-09-24 20:44:55     ARCH-SRV-01    SSEC-E138    Meera Nair            GRANTED      Telemetry rack entry
+2026-09-24 21:05:12     ARCH-DOC-03    SSEC-E149    Rohit Sen             GRANTED      Documentation office
+2026-09-24 21:14:38     ARCH-CORR-02   SSEC-E102    Arjun Dev             GRANTED      Heading toward Lab 3
+2026-09-24 21:28:44     ARCH-LAB-03    SSEC-F092    Prof. Alok Mathur     GRANTED      Project Faraday Vault
+2026-09-24 21:30:00     ARCH-CCTV-SYS  --           SYSTEM_ADMIN          BYPASS_MODE  CCTV loop offline (18m)
+2026-09-24 21:36:22     ARCH-LAB-03    UNKNOWN      OVERRIDE_KEYPAD       GRANTED      PIN: 7729* (EMERGENCY)
+2026-09-24 21:48:15     ARCH-CCTV-SYS  --           SYSTEM_ADMIN          NORMAL_MODE  CCTV restored
+2026-09-24 21:52:03     ARCH-LAB-02    SSEC-E114    Kavin Raj             GRANTED      Exit toward corridor
+2026-09-24 22:04:19     ARCH-CORR-01   SSEC-E149    Rohit Sen             GRANTED      Exit to parking lot
+2026-09-24 22:15:33     ARCH-SRV-01    SSEC-E138    Meera Nair            GRANTED      High-speed link terminated
+2026-09-24 22:31:02     ARCH-LAB-01    SSEC-E102    Arjun Dev             GRANTED      Workstation locked
+2026-09-24 22:45:19     ARCH-LAB-03    SSEC-SEC04   Night Watchman        ALERT        UNRESPONSIVE BODY FOUND
+================================================================================
+SECURITY NOTICE: KEYPAD OVERRIDE AT 21:36:22 CARRIES NO BADGE SIGNATURE.
+CONTACT FORENSIC INVESTIGATOR IMMEDIATELY.
